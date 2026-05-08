@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoSurge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fondo animado con figuras geométricas -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Contador de visitas (flotante, costado derecho) -->
+  <div class="visitor-widget" id="visitorWidget">
+    <div class="visitor-icon">◈</div>
+    <div class="visitor-label">JUGADORES</div>
+    <div class="visitor-count" id="visitCounter">...</div>
+  </div>
+
+  <!-- Pantalla de inicio -->
+  <div id="startScreen" class="screen active">
+    <div class="title-block">
+      <div class="title-geo">GEO</div>
+      <div class="title-surge">SURGE</div>
+      <div class="title-tagline">SURVIVE THE GEOMETRY</div>
+    </div>
+
+    <div class="instructions-panel">
+      <div class="inst-row">
+        <span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span>
+        <span class="inst-text">mover el cubo</span>
+      </div>
+      <div class="inst-row"><span class="inst-icon">⬡</span><span class="inst-text">esquiva los fragmentos rojos</span></div>
+      <div class="inst-row"><span class="inst-icon">⚡</span><span class="inst-text">cada 10s sube el nivel</span></div>
+    </div>
+
+    <div class="scores-block">
+      <div class="scores-title">— TOP SCORES —</div>
+      <ol id="scoreListStart" class="score-list"></ol>
+    </div>
+
+    <button class="btn-play" onclick="startGame()">
+      <span class="btn-inner">▶&nbsp;PLAY</span>
+    </button>
+  </div>
+
+  <!-- Canvas del juego -->
+  <canvas id="gameCanvas" width="500" height="500"></canvas>
+
+  <!-- Pantalla de Game Over -->
+  <div id="gameOverScreen" class="screen">
+    <div class="go-title">
+      <span class="go-word red-word">GAME</span>
+      <span class="go-word cyan-word">OVER</span>
+    </div>
+    <div class="go-score-display">
+      <div class="go-label">TIEMPO SOBREVIVIDO</div>
+      <div id="timeSurvived" class="go-time"></div>
+    </div>
+    <div class="scores-block">
+      <div class="scores-title">— TOP SCORES —</div>
+      <ol id="scoreListGameOver" class="score-list"></ol>
+    </div>
+    <button class="btn-play" onclick="startGame()">
+      <span class="btn-inner">▶&nbsp;RETRY</span>
+    </button>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bgMusic"      src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+  <audio id="hitSound"     src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+  <audio id="levelUpSound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+
+  <script src="audio.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
